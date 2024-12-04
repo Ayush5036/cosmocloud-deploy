@@ -1,0 +1,24 @@
+backend:
+  image: shreybatra/sample-backend
+  replicas: 1
+  port: 8000
+  service:
+    type: ClusterIP
+    name: backend-svc
+
+frontend:
+  image: shreybatra/sample-frontend
+  replicas: 1
+  port: 5173
+  service:
+    type: NodePort
+    name: frontend-svc
+    nodePort: 31000
+
+redis:
+  image: redis
+  replicas: 1
+  port: 6379
+  service:
+    type: ClusterIP
+    name: redis-svc
